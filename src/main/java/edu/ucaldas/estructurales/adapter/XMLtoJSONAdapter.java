@@ -8,7 +8,9 @@ public class XMLtoJSONAdapter implements JSONService {
     }
 
     public String getJSON() {
-        // TODO: convertir XML a JSON
-        return null;
+        String xml = xmlService.getData();
+        String result = xml.trim();
+        result = result.replaceAll("<([^/][^>]*)>([^<]*)</[^>]+>", "{\"$1\":\"$2\"}");
+        return result;
     }
 }
